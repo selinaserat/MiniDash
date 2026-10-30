@@ -1,27 +1,21 @@
-# Import APIRouter to define restaurant-related API endpoints.
-# Routers let us organize endpoints in separate files.
-from fastapi import APIRouter
+"""Public restaurant and menu endpoints."""
+from fastapi import APIRouter, HTTPException
 
-# Create a router for restaurant endpoints.
-# The prefix means all routes here begin with /restaurants.
-# The tag groups these endpoints in Swagger UI.
-router = APIRouter(
-    prefix="/restaurants",
-    tags=["Restaurants"]
-)
+from src.repositories import store
+
+# Prefix-free router allows exact paths without implicit trailing slash redirects.
+router = APIRouter(tags=["Restaurants"])
 
 
-# Define the GET /restaurants endpoint.
-# Customers will use this endpoint to browse restaurants.
-@router.get("/")
+@router.get("/restaurants")
 def list_restaurants():
-    """
-    Return the list of available restaurants.
+    """List seeded restaurant names, cuisines, hours and prep times."""
+    return store.restaurants()
 
-    This is a temporary response used to verify routing.
-    In the next steps, the endpoint will retrieve real
-    restaurant records from our SQLite database.
-    """
 
-    # Return an empty list until the database query is connected.
-    return []
+@router.get("/restaurants/{restaurant_id}/menu")
+def get_menu(restaurant_id: int):
+    """Show menu prices in cents for a known restaurant."""
+    if not store.restaurant(restaurant_id):
+        raise HTTPException(status_code=404,detail="Restaurant not found")
+    return store.menu(restaurant_id)
