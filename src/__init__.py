@@ -1,0 +1,1 @@
+"""MiniDash application package."""
