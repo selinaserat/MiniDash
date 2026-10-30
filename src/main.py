@@ -1,30 +1,27 @@
-# Import FastAPI, the framework used to build our REST API.
-# FastAPI allows MiniDash to receive HTTP requests
-# and send responses back to customers.
+"""FastAPI entry point for all MiniDash endpoints."""
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 
-
-# Create the main MiniDash application.
-# The title appears in the automatic API documentation
-# at http://127.0.0.1:8000/docs.
-app = FastAPI(title="MiniDash API")
+from src.database import initialize_database, seed_restaurants
+from src.routes.orders import router as order_router
+from src.routes.restaurants import router as restaurant_router
 
 
-# Define the application's home endpoint.
-# @app.get("/") means this function responds to
-# HTTP GET requests sent to the root URL (/).
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initialize and seed SQLite once when the server or test client starts."""
+    initialize_database()
+    seed_restaurants()
+    yield  # FastAPI serves requests between startup and shutdown.
+
+
+app = FastAPI(title="MiniDash API", lifespan=lifespan)
+app.include_router(restaurant_router)
+app.include_router(order_router)
+
+
 @app.get("/")
 def home():
-    """
-    Health-check endpoint.
-
-    This endpoint confirms that the MiniDash API
-    is running and responding to requests.
-    """
-
-    # Return a Python dictionary.
-    # FastAPI automatically converts it into JSON.
-    return {
-        "message": "MiniDash API is running",
-        "status": "ok"
-    }
+    """Health check used to confirm the API server is online."""
+    return {"message":"MiniDash API is running","status":"ok"}
