@@ -7,6 +7,12 @@ Users can browse restaurants, view menus, add items to their cart, place orders,
 
 The main feature I worked on for Track C is live order tracking. Orders move through different stages, from being placed to being delivered. The website automatically checks for updates so users can see when their order status changes.
 
+## MiniDash Demo Recording
+
+I recorded a demonstration of my MiniDash project showing how the backend works, how I place and track orders, how invalid status changes are handled, and how I run my automated tests.
+
+[Watch my MiniDash demo](https://drive.google.com/file/d/1zLpsvLa8M_E299WSpo0RV_dEnNw0MzVt/view?usp=share_link)
+
 ## Technologies Used
 
 - Python and FastAPI for the backend
