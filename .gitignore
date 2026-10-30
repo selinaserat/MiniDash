@@ -1,0 +1,26 @@
+# Exclude Python virtual environment
+.venv/
+
+# Exclude Python cache files
+__pycache__/
+*.pyc
+
+# Exclude PyCharm configuration files
+.idea/
+
+# Exclude local SQLite database files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Exclude test and lint cache files
+.pytest_cache/
+.ruff_cache/
+
+# Exclude environment files containing secrets
+.env
+.env.*
+
+# Exclude macOS system files
+.DS_Store
