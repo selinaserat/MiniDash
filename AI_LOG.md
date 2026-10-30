@@ -1,154 +1,144 @@
-
 # MiniDash — AI Interaction Log
 
-## Project Information
-
 **Project:** MiniDash — Track C: Live Order Tracking  
-**AI tool:** ChatGPT (OpenAI)  
-**Development environment:** Python, FastAPI, SQLite, PyCharm, GitHub  
-**Development period:** October 2026
+**AI Tool:** ChatGPT  
+**Development Environment:** Python, FastAPI, SQLite, PyCharm, GitHub  
+**Date:** October 2026
 
-This log documents how AI assisted with the development of MiniDash. It includes generated code, documentation, debugging, testing, revisions, and verification. Exact interaction timestamps are omitted where they were not recorded.
+For this project, I used ChatGPT to help me understand how to build certain parts of MiniDash, troubleshoot errors, and check my work. I didn't just copy the code and assume everything would work. I ran the application, tested the features, and went back to fix things when something wasn't working correctly.
 
-## Entry 1 — Initial FastAPI and SQLite Setup
+I didn't record the exact time of every interaction, so I organized this log by the parts of the project I was working on.
 
-**Prompt:** Requested assistance creating a FastAPI application with a SQLite database for a food delivery tracking system.
+## Entry 1 — Setting Up the Project
 
-**AI contribution:** Provided starter application code, database initialization instructions, and Git setup commands.
+**What I asked:** I asked ChatGPT to help me start my MiniDash project using FastAPI and SQLite.
 
-**My verification:** Initialized the SQLite database and confirmed that the `restaurants`, `menu_items`, `orders`, and `order_items` tables existed.
+**What AI suggested:** It gave me starter code, explained how to organize my files, and helped me set up the database and Git.
 
-**Outcome:** Created the initial Git commit, `402b17e`.
+**What I did:** I created the project in PyCharm, followed the setup instructions, and checked that the application and database were working.
+
+**Result:** I had the basic structure of my project ready so I could start adding features.
 
 ## Entry 2 — Requirements and Architecture
 
-**Prompt:** Requested assistance documenting MiniDash's requirements, system architecture, and development tasks.
+**What I asked:** I needed help organizing the requirements and planning how the application would work.
 
-**AI contribution:** Helped structure the requirements, architecture documentation, and implementation plan.
+**What AI suggested:** ChatGPT helped me break the project down into smaller parts and organize the documentation.
 
-**My verification:** Added the documentation files to the project and committed them.
+**What I did:** I reviewed the suggested structure and added the documentation to my project.
 
-**Outcome:** Documentation commit `b9751ed`.
+**Result:** I had a clearer idea of what needed to be built and how the different parts would connect.
 
-## Entry 3 — SQLite Connection Management
+## Entry 3 — Fixing Database Issues
 
-**Prompt:** Requested help investigating database connection warnings encountered during automated testing.
+**What I asked:** I ran into database connection warnings while working on my tests and asked ChatGPT what they meant.
 
-**AI contribution:** Suggested improvements to SQLite connection handling and restaurant endpoints.
+**What AI suggested:** It explained possible issues with how SQLite connections were being handled and suggested changes.
 
-**My verification:** Reviewed test output and continued testing after the database changes.
+**What I did:** I updated the code and continued running my tests to make sure I hadn't broken anything.
 
-**Outcome:** Database improvements committed as `8bec88b`.
+**Result:** I was able to continue working with the database and testing the application.
 
-## Entry 4 — Order Processing and Status Transitions
+## Entry 4 — Creating Orders and Updating Their Status
 
-**Prompt:** Requested implementation guidance for creating orders and tracking their progress.
+**What I asked:** I wanted customers to be able to place orders and track them through the delivery process.
 
-**AI contribution:** Assisted with order routes, service logic, and database repository organization.
+**What AI suggested:** It helped me implement the order endpoints and the logic for moving orders between different statuses.
 
-**My verification:** Tested order creation and the progression through PLACED, PREPARING, READY, PICKED_UP, and DELIVERED.
+**What I did:** I tested creating orders and updating their statuses using the FastAPI documentation page.
 
-**Outcome:** Implemented order processing and tracking functionality.
+**Result:** Orders could move through PLACED, PREPARING, READY, PICKED_UP, and DELIVERED.
 
-## Entry 5 — Automated Testing
+## Entry 5 — Writing and Running Tests
 
-**Prompt:** Requested help verifying the application's behavior.
+**What I asked:** I asked ChatGPT for help testing the different parts of MiniDash.
 
-**AI contribution:** Assisted with tests covering orders, restaurant data, tracking, and invalid operations.
+**What AI suggested:** It helped me work on automated tests for restaurant information, orders, and tracking behavior.
 
-**My verification:** Ran `python -m pytest -q` and confirmed that all 21 tests passed.
+**What I did:** I ran the tests in the PyCharm terminal and worked through the issues until they passed.
 
-**Outcome:** Added automated regression tests and verified the application.
+**Result:** I ended up with 21 passing automated tests.
 
-## Entry 6 — Demonstration and GitHub Workflow
+## Entry 6 — Git and GitHub
 
-**Prompt:** Requested guidance preparing the application for demonstration and submission.
+**What I asked:** I needed help keeping track of my changes and uploading my work to GitHub.
 
-**AI contribution:** Explained demonstration scripts, Git commits, version-control checks, and GitHub synchronization.
+**What AI suggested:** It explained how to use commands like `git add`, `git commit`, `git push`, and `git status`.
 
-**My verification:** Reviewed Git history and successfully pushed the project to GitHub.
+**What I did:** I ran the commands myself, checked the terminal output, and made sure the changes were uploaded.
 
-**Outcome:** Created a documented Git history and published the project repository.
+**Result:** My project was saved in GitHub with a history of my commits.
 
-## Entry 7 — Customer-Facing Website
+## Entry 7 — Building the Website
 
-**Prompt:** Requested a visual MiniDash website similar in functionality to a modern food-delivery interface.
+**What I asked:** Once the backend was working, I wanted MiniDash to have an actual website instead of only using the API documentation. I wanted something similar to a food delivery website.
 
-**AI contribution:** Generated HTML, CSS, and JavaScript for restaurant browsing, menus, a shopping cart, and delivery tracking.
+**What AI suggested:** ChatGPT helped me create the HTML, CSS, and JavaScript for displaying restaurants, menus, a shopping cart, and order tracking.
 
-**My changes:** Chose to build the files manually in PyCharm rather than download a prepared ZIP. Connected the static frontend to the FastAPI application.
+**What I did:** I created the frontend files in PyCharm and connected them to my FastAPI backend.
 
-**My verification:** Opened `/app` locally and confirmed that restaurant information loaded.
+**Result:** I could open MiniDash in my browser and interact with the website.
 
-**Outcome:** Added the customer-facing website.
+## Entry 8 — Fixing the Menu Display and Prices
 
-## Entry 8 — Revision of Food Images and Price Handling
+**What I asked:** When I tested the website, I noticed that some of the food images didn't make sense. For example, pasta was showing a burger emoji. I also noticed that some prices were showing `$NaN`.
 
-**Prompt:** Reported that pasta displayed a burger emoji and menu prices appeared as `$NaN`.
+**What AI originally gave me:** The JavaScript wasn't properly matching food items to their display icons, and it was using the wrong field for the prices.
 
-**Original AI-generated behavior:** The frontend displayed the same burger emoji for all dishes and attempted to read prices using `item.price`.
+**What I changed:** I didn't want to keep the original version because it looked incorrect. I asked ChatGPT to change the food displays and fix how the prices were being read from the backend.
 
-**My decision:** Requested more accurate food-specific emojis and corrected price handling.
+**How I checked it:** I refreshed the website and checked the menu again.
 
-**Revised solution:** Replaced hardcoded emojis with name-based selection functions and added support for prices supplied through `price_cents`.
+**Result:** The menu looked more accurate and the price problem was corrected.
 
-**My verification:** Refreshed the website and confirmed that the design and displayed content worked after the changes.
+## Entry 9 — Fixing Checkout
 
-**Outcome:** Substantially revised the original frontend implementation.
+**What I asked:** When I tried placing an order, I received an error because the delivery address was missing.
 
-## Entry 9 — Checkout Validation
+**What AI suggested:** ChatGPT explained that the backend required an address when creating an order and suggested adding an address prompt.
 
-**Prompt:** Reported a checkout failure stating that the delivery address was missing.
+**What I did:** I updated the checkout process and tried again using a test address.
 
-**AI contribution:** Identified the required `address` field from FastAPI's validation response and recommended prompting the customer for an address.
+**Result:** I was able to place an order successfully.
 
-**My verification:** Entered a demonstration address and successfully created an order.
+## Entry 10 — Fixing Live Tracking
 
-**Outcome:** Corrected checkout request data to match the backend's requirements.
+**What I asked:** After placing an order, the tracking section displayed a "Method Not Allowed" error.
 
-## Entry 10 — Rejected Tracking Endpoint and Corrected Implementation
+**What AI originally gave me:** The JavaScript was requesting `/orders/{order_id}/status`, which wasn't the correct endpoint for retrieving tracking information.
 
-**Prompt:** Reported that live tracking displayed `Method Not Allowed`.
+**What I changed:** I checked the available endpoints in FastAPI's documentation and found that the correct one was `/orders/{order_id}/tracking`. I replaced the incorrect request instead of keeping the original code.
 
-**Original AI-generated implementation:** Requested `GET /orders/{order_id}/status`.
+**How I checked it:** I placed another order and watched the tracking section.
 
-**Problem:** The backend uses that path for status updates rather than retrieving tracking information.
+**Result:** The tracking information started displaying correctly, and the status updated when I changed it through the API.
 
-**My decision:** Did not retain the incorrect endpoint. Used the API documentation to identify the appropriate tracking route.
+## Entry 11 — Testing Invalid Order Statuses
 
-**Revised solution:** Changed the request to `GET /orders/{order_id}/tracking`.
+**What I asked:** While testing the order statuses, I received a 422 error and wasn't sure why.
 
-**My verification:** Created Order #2 and confirmed that tracking information appeared and updated as the order progressed.
+**What AI explained:** It pointed out that I had entered `PINKED UP` instead of `PICKED_UP`, and the status needed to match the allowed value exactly.
 
-**Outcome:** Rejected the incorrect API integration and replaced it with the verified tracking endpoint.
+**What I did:** I corrected the value and continued updating the order through the remaining delivery stages.
 
-## Entry 11 — Invalid Status Validation
+**Result:** I confirmed that the application rejects invalid status values and that I could complete the order through DELIVERED.
 
-**Prompt:** Requested help interpreting an HTTP 422 error during the order demonstration.
+## Entry 12 — Final Testing and GitHub Upload
 
-**AI contribution:** Explained that status values must match the backend's permitted values exactly.
+**What I asked:** I wanted to make sure my project was saved properly and everything was working before submission.
 
-**My verification:** Corrected the status to `PICKED_UP` and continued the workflow through `DELIVERED`.
+**What AI suggested:** ChatGPT gave me commands to check my GitHub status and run the automated tests again.
 
-**Outcome:** Confirmed that the API validates status values and that the full delivery lifecycle works.
+**What I did:** I ran the tests and confirmed that all 21 passed. I also pushed my latest changes to GitHub.
 
-## Entry 12 — Final Verification and Repository Update
+**Result:** The latest frontend changes were committed as `4a91d38`. Git showed that my branch was up to date and there was nothing left to commit.
 
-**Prompt:** Requested help confirming the final GitHub submission state.
+## What I Learned
 
-**AI contribution:** Provided Git status, commit, push, and testing commands.
+Using ChatGPT helped me get through parts of the project that I wasn't completely familiar with, especially connecting the frontend to the backend and understanding the errors.
 
-**My verification:** Confirmed that all 21 automated tests passed and Git reported a clean working tree.
+One thing I realized is that AI-generated code doesn't always match what is already in the project. The price issue and the tracking endpoint issue were both examples of that. The code looked reasonable at first, but when I actually ran it, it didn't work correctly.
 
-**Outcome:** Pushed the customer-facing website in commit `4a91d38` and confirmed that the local branch was synchronized with `origin/main`.
+I had to explain the errors, look at the API documentation, make changes, and test everything again.
 
-## Summary
-
-AI was used to accelerate implementation, documentation, debugging, and testing. However, generated code required verification against the actual FastAPI endpoints and database response formats.
-
-Two important corrections were made to AI-generated frontend code:
-
-1. Revised the menu display and price calculations to eliminate incorrect emojis and `$NaN` values.
-2. Replaced the incorrect order-tracking API endpoint after encountering HTTP 405.
-
-The project was verified through automated tests, API testing, browser demonstrations, and Git version-control checks.
+Overall, AI was helpful for figuring out what to try next, but I still had to verify that the code worked in my actual application.
